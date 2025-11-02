@@ -1,0 +1,604 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --primary-color: #10b981;
+    --primary-hover: #059669;
+    --primary-light: rgba(16, 185, 129, 0.15);
+    --secondary-color: #1DB954;
+    
+    /* Dark mode colors */
+    --bg-dark: #0a0a0a;
+    --bg-dark-secondary: #111111;
+    --card-bg: #1a1a1a;
+    --card-bg-hover: #1f1f1f;
+    --text-primary: #ffffff;
+    --text-secondary: #a3a3a3;
+    --text-tertiary: #737373;
+    --border-color: #2a2a2a;
+    --border-hover: #3a3a3a;
+    
+    --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.3);
+    --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.4);
+    --shadow-lg: 0 10px 25px rgba(0, 0, 0, 0.5);
+    --shadow-glow: 0 0 20px rgba(16, 185, 129, 0.3);
+    
+    --radius-sm: 0.5rem;
+    --radius-md: 0.75rem;
+    --radius-lg: 1rem;
+    --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+body {
+    font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    background: var(--bg-dark);
+    color: var(--text-primary);
+    min-height: 100vh;
+    padding: 0.75rem;
+    line-height: 1.6;
+    position: relative;
+    overflow-x: hidden;
+}
+
+/* Móviles pantalla pequeña (320px - 374px) */
+@media (min-width: 320px) {
+    body {
+        padding: 0.75rem;
+    }
+}
+
+/* Móviles pantalla mediana (375px - 424px) */
+@media (min-width: 375px) {
+    body {
+        padding: 1rem;
+    }
+}
+
+/* Móviles pantalla grande (425px - 767px) */
+@media (min-width: 425px) {
+    body {
+        padding: 1.25rem;
+    }
+}
+
+/* Tablets (768px - 1023px) */
+@media (min-width: 768px) {
+    body {
+        padding: 1.5rem;
+    }
+}
+
+/* Ordenadores (1024px+) */
+@media (min-width: 1024px) {
+    body {
+        padding: 2rem;
+    }
+}
+
+/* Grid Background */
+.grid-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    background-image: 
+        linear-gradient(rgba(16, 185, 129, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(16, 185, 129, 0.03) 1px, transparent 1px);
+    background-size: 30px 30px;
+    background-position: center center;
+    pointer-events: none;
+}
+
+/* Móviles pantalla mediana */
+@media (min-width: 375px) {
+    .grid-background {
+        background-size: 40px 40px;
+    }
+}
+
+/* Móviles pantalla grande */
+@media (min-width: 425px) {
+    .grid-background {
+        background-size: 50px 50px;
+    }
+}
+
+/* Tablets */
+@media (min-width: 768px) {
+    .grid-background {
+        background-size: 60px 60px;
+    }
+}
+
+/* Ordenadores */
+@media (min-width: 1024px) {
+    .grid-background {
+        background-size: 80px 80px;
+    }
+}
+
+.grid-background::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(circle at 50% 50%, transparent 0%, var(--bg-dark) 100%);
+}
+
+.container {
+    max-width: 1400px;
+    margin: 0 auto;
+    animation: fadeIn 0.6s ease-out;
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    padding: 0;
+}
+
+/* Asegurar que el contenedor no se desborde en ningún dispositivo */
+@media (max-width: 374px) {
+    .container {
+        max-width: 100%;
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.header {
+    text-align: center;
+    margin-bottom: 1.5rem;
+    padding: 0.75rem;
+    max-width: 100%;
+}
+
+/* Móviles pantalla mediana */
+@media (min-width: 375px) {
+    .header {
+        margin-bottom: 1.75rem;
+        padding: 1rem;
+    }
+}
+
+/* Móviles pantalla grande */
+@media (min-width: 425px) {
+    .header {
+        margin-bottom: 2rem;
+    }
+}
+
+/* Tablets */
+@media (min-width: 768px) {
+    .header {
+        margin-bottom: 2.5rem;
+        padding: 1.5rem;
+    }
+}
+
+/* Ordenadores */
+@media (min-width: 1024px) {
+    .header {
+        margin-bottom: 3rem;
+        padding: 2rem;
+    }
+}
+
+.header h1 {
+    font-size: 1.5rem;
+    color: var(--text-primary);
+    margin-bottom: 0.75rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    flex-wrap: wrap;
+    word-break: break-word;
+    max-width: 100%;
+}
+
+/* Móviles pantalla mediana */
+@media (min-width: 375px) {
+    .header h1 {
+        font-size: 1.75rem;
+        gap: 0.625rem;
+    }
+}
+
+/* Móviles pantalla grande */
+@media (min-width: 425px) {
+    .header h1 {
+        font-size: 2rem;
+        gap: 0.75rem;
+    }
+}
+
+/* Tablets */
+@media (min-width: 768px) {
+    .header h1 {
+        font-size: 2.5rem;
+        gap: 0.875rem;
+    }
+}
+
+/* Ordenadores */
+@media (min-width: 1024px) {
+    .header h1 {
+        font-size: 3rem;
+        gap: 1rem;
+    }
+}
+
+.logo-icon {
+    font-size: 1.75rem;
+    animation: bounce 2s infinite;
+    filter: drop-shadow(0 0 10px rgba(16, 185, 129, 0.5));
+    flex-shrink: 0;
+}
+
+/* Móviles pantalla mediana */
+@media (min-width: 375px) {
+    .logo-icon {
+        font-size: 2rem;
+    }
+}
+
+/* Móviles pantalla grande */
+@media (min-width: 425px) {
+    .logo-icon {
+        font-size: 2.25rem;
+    }
+}
+
+/* Tablets */
+@media (min-width: 768px) {
+    .logo-icon {
+        font-size: 3rem;
+    }
+}
+
+/* Ordenadores */
+@media (min-width: 1024px) {
+    .logo-icon {
+        font-size: 3.5rem;
+    }
+}
+
+@keyframes bounce {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+.subtitle {
+    color: var(--text-secondary);
+    font-size: 0.875rem;
+    font-weight: 400;
+    max-width: 100%;
+    padding: 0 0.5rem;
+}
+
+/* Móviles pantalla mediana */
+@media (min-width: 375px) {
+    .subtitle {
+        font-size: 0.9rem;
+    }
+}
+
+/* Móviles pantalla grande */
+@media (min-width: 425px) {
+    .subtitle {
+        font-size: 1rem;
+        padding: 0;
+    }
+}
+
+/* Tablets y superiores */
+@media (min-width: 768px) {
+    .subtitle {
+        font-size: 1.1rem;
+    }
+}
+
+/* Ordenadores */
+@media (min-width: 1024px) {
+    .subtitle {
+        font-size: 1.2rem;
+    }
+}
+
+.main-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+    margin-bottom: 2.5rem;
+    max-width: 100%;
+}
+
+/* Móviles pantalla mediana */
+@media (min-width: 375px) {
+    .main-grid {
+        gap: 1.35rem;
+    }
+}
+
+/* Móviles pantalla grande */
+@media (min-width: 425px) {
+    .main-grid {
+        gap: 1.5rem;
+    }
+}
+
+/* Tablets */
+@media (min-width: 768px) {
+    .main-grid {
+        gap: 1.75rem;
+        margin-bottom: 2.75rem;
+    }
+}
+
+/* Ordenadores */
+@media (min-width: 1024px) {
+    .main-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 2rem;
+        margin-bottom: 3rem;
+    }
+}
+
+/* Pantallas muy grandes */
+@media (min-width: 1400px) {
+    .main-grid {
+        gap: 2.5rem;
+    }
+}
+
+.left-column {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+    max-width: 100%;
+}
+
+/* Móviles pantalla mediana */
+@media (min-width: 375px) {
+    .left-column {
+        gap: 1.35rem;
+    }
+}
+
+/* Móviles pantalla grande y superiores */
+@media (min-width: 425px) {
+    .left-column {
+        gap: 1.5rem;
+    }
+}
+
+.right-column {
+    position: relative;
+}
+
+@media (min-width: 1024px) {
+    .right-column {
+        position: sticky;
+        top: 2rem;
+        height: fit-content;
+    }
+}
+
+.hidden {
+    display: none !important;
+}
+
+/* Smooth transitions for showing/hiding elements */
+.card-animate {
+    animation: slideIn 0.4s ease-out;
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Footer */
+.footer {
+    margin-top: 3rem;
+    padding: 1.5rem 0;
+    border-top: 1px solid var(--border-color);
+    max-width: 100%;
+}
+
+/* Móviles pantalla mediana y superiores */
+@media (min-width: 375px) {
+    .footer {
+        margin-top: 3.5rem;
+        padding: 1.75rem 0;
+    }
+}
+
+/* Tablets y superiores */
+@media (min-width: 768px) {
+    .footer {
+        margin-top: 4rem;
+        padding: 2rem 0;
+    }
+}
+
+.footer-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    text-align: center;
+    max-width: 100%;
+    padding: 0 0.5rem;
+}
+
+/* Móviles pantalla mediana */
+@media (min-width: 375px) {
+    .footer-content {
+        padding: 0 0.75rem;
+    }
+}
+
+/* Tablets y superiores */
+@media (min-width: 768px) {
+    .footer-content {
+        flex-direction: row;
+        justify-content: space-between;
+        text-align: left;
+        padding: 0;
+    }
+}
+
+.footer-text {
+    color: var(--text-secondary);
+    font-size: 0.8rem;
+    font-weight: 400;
+    max-width: 100%;
+    word-break: break-word;
+}
+
+/* Móviles pantalla mediana y superiores */
+@media (min-width: 375px) {
+    .footer-text {
+        font-size: 0.85rem;
+    }
+}
+
+/* Móviles pantalla grande y superiores */
+@media (min-width: 425px) {
+    .footer-text {
+        font-size: 0.875rem;
+    }
+}
+
+.footer-link {
+    color: var(--primary-color);
+    text-decoration: none;
+    font-weight: 500;
+    transition: var(--transition);
+}
+
+.footer-link:hover {
+    color: var(--primary-hover);
+    text-decoration: underline;
+}
+
+.footer-links {
+    display: flex;
+    gap: 1.5rem;
+}
+
+.footer-social {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--text-secondary);
+    text-decoration: none;
+    font-size: 0.875rem;
+    font-weight: 500;
+    transition: var(--transition);
+    padding: 0.5rem 1rem;
+    border-radius: var(--radius-sm);
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+}
+
+.footer-social:hover {
+    color: var(--primary-color);
+    border-color: var(--primary-color);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-glow);
+}
+
+.footer-social svg {
+    width: 20px;
+    height: 20px;
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--bg-dark-secondary);
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--primary-color);
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--primary-hover);
+}
+
+/* Firefox scrollbar */
+* {
+    scrollbar-width: thin;
+    scrollbar-color: var(--primary-color) var(--bg-dark-secondary);
+}
+
+/* Button Group for credentials */
+.button-group {
+    display: flex;
+    gap: 0.75rem;
+    flex-direction: column;
+    width: 100%;
+}
+
+/* Móviles pantalla mediana */
+@media (min-width: 375px) {
+    .button-group {
+        gap: 0.75rem;
+    }
+}
+
+/* Móviles pantalla grande y superiores */
+@media (min-width: 425px) {
+    .button-group {
+        gap: 0.75rem;
+    }
+}
+
+/* Tablets y superiores */
+@media (min-width: 640px) {
+    .button-group {
+        flex-direction: row;
+    }
+}
+
+/* Asegurar que los botones en grupo no se desborden */
+.button-group .btn {
+    flex: 1;
+    min-width: 0;
+}
