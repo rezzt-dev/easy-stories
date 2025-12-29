@@ -1,4 +1,4 @@
-# Saving Food. Sustaining the Future.
+# Easy Stories
 
 <div align="center">
 
