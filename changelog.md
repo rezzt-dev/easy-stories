@@ -10,6 +10,10 @@
 - anadir `claude.md` y `agents.md` con la guia del proyecto y el resumen de las reglas de commits, pr y releases
 - anadir este `changelog.md` bilingue
 
+#### CAMBIADO
+
+- completar las guías de gestión y el contexto específico del proyecto; conservar las reglas técnicas y verificar las rutas
+
 ### ENGLISH
 
 #### ADDED
@@ -17,3 +21,7 @@
 - add `.docs/repo-audit-and-fix.md` with the verified context and the repository audit plan
 - add `claude.md` and `agents.md` with the project guide and the digest of the commit, pr and release rules
 - add this bilingual `changelog.md`
+
+#### CHANGED
+
+- complete repository management guides and project-specific context; preserve technical rules and verify paths

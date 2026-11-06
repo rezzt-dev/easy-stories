@@ -1,8 +1,8 @@
 # GUIA DEL CHANGELOG
 
-> como se escribe y se cierra `changelog.md` (raiz del repositorio). es la
-> fuente de verdad de commits, pull requests, merges y releases: nada se
-> redacta en paralelo, todo se extrae de aqui.
+> como se escribe y se cierra `changelog.md`. es la fuente de verdad
+> de commits, pull requests, merges y releases: nada se redacta en paralelo,
+> todo se extrae de aqui.
 
 ---
 
@@ -29,7 +29,6 @@
 - la seccion `## SIN PUBLICAR / UNRELEASED` esta siempre arriba y recoge lo que aun no se ha publicado.
 - las versiones cerradas van de la mas reciente a la mas antigua.
 - cada version lleva `### CASTELLANO` y `### ENGLISH` con paridad exacta de items.
-- el changelog se creo el 2026-11-06; el trabajo anterior (creacion de la web, temas, renombrado de saving food a easy stories) no tiene entradas y no se reconstruye.
 
 ---
 
@@ -37,11 +36,11 @@
 
 | castellano | english | que va |
 |---|---|---|
-| `ANADIDO` | `ADDED` | funcionalidades, temas, ficheros o documentos nuevos |
+| `ANADIDO` | `ADDED` | funcionalidades, ficheros o documentos nuevos |
 | `CAMBIADO` | `CHANGED` | cambios en comportamiento, estructura o documentacion existente |
 | `CORREGIDO` | `FIXED` | errores corregidos |
 | `ELIMINADO` | `REMOVED` | codigo, ficheros o funciones retirados |
-| `SEGURIDAD` | `SECURITY` | correcciones o endurecimiento con impacto de seguridad (por ejemplo, retirar credenciales del codigo) |
+| `SEGURIDAD` | `SECURITY` | correcciones o endurecimiento con impacto de seguridad |
 
 se omite la categoria que no tenga items. no se crean otras.
 
@@ -53,6 +52,7 @@ se omite la categoria que no tenga items. no se crean otras.
 - un item por linea, en imperativo ("anadir", "corregir", "mover"), empezando por `-`.
 - ficheros, rutas, comandos e identificadores entre backticks.
 - explica el efecto visible o el motivo, no el detalle de implementacion linea a linea.
+- conservar los marcadores de variantes existentes; no crear marcadores de otra aplicacion.
 - sin menciones a herramientas de ia ni a quien escribio el item.
 
 ---
@@ -68,23 +68,24 @@ se omite la categoria que no tenga items. no se crean otras.
 ## 5. CERRAR UNA VERSION
 
 1. comprobar que `## SIN PUBLICAR / UNRELEASED` esta completo y con paridad entre idiomas.
-2. renombrarlo a `## [x.y.z] - aaaa-mm-dd` (fecha de cierre) y dejar debajo una seccion `## SIN PUBLICAR / UNRELEASED` vacia.
-3. no hay version en codigo que subir; si en el futuro se anade un manifiesto con version, se sube en un commit `changes` antes de cerrar.
-4. commit con prefijo `changelog`, en una rama `changes/release-<x.y.z>`:
+2. cerrar la version como `## [x.y.z] - aaaa-mm-dd` y mantener una nueva seccion `## SIN PUBLICAR / UNRELEASED` arriba.
+3. actualizar la version en los manifiestos reales del proyecto si se ha acordado una publicacion; no cambiar versiones para una pr de documentacion.
+4. commit con prefijo `changelog`:
 
 ```
 changelog | cerrar la seccion de changelog para la version <x.y.z>
 ```
 
-5. abrir la pr de version (ver `pr-merge-guide.md`) y, al fusionar en `main`, desplegar y crear la release (ver `release-guide.md`).
+5. abrir la pr de version (ver `pr-merge-guide.md`) y, al fusionar en `main`, crear la release (ver `release-guide.md`).
 
 ---
 
 ## 6. NUMERACION
 
-- esquema `x.y.z`; la primera version la fija el propietario (no hay ninguna publicada).
-- `x` cambia con rupturas grandes (por ejemplo, un cambio de flujo de autenticacion); `y` con funcionalidades o temas nuevos; `z` con correcciones.
-- un numero publicado nunca se reutiliza.
+- fuentes de version comprobadas: no application version manifest exists.
+- no inventar versiones ni tags para proyectos sin politica de publicacion.
+- conservar el formato historico de las versiones publicadas; acordar cualquier migracion.
+- las variantes y sus marcadores solo se usan cuando existen en este proyecto.
 
 ---
 
